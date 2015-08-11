@@ -1,4 +1,4 @@
-# PDS 2015.1 - CondoSmart
+# PDS 2015.1 - CondoPrime
 
 ## Apresentação
 
@@ -17,3 +17,24 @@ Somos alunos do IF do Rio Grande do Norte, do curso de **TADS** (Tecnologia e An
 * Fellipe Aleixo (Desenvolvimento de Sistema WEB)
 * Marilia Freire (Análise e Projeto Orientados a Objeto)
 * José Antônio (Banco de Dados)
+
+# CondoPrime
+Aplicativo para gestão de condominios.
+
+## Instalação
+Para instalar o ambiente, depois de clonar este repositório, faça:
+
+    $ virtualenv env;
+    $ source env/bin/activate;
+    $ pip install -r requirements.pip
+    $ python manage.py migrate;
+
+Este comando adiciona um superusuario na ferramenta:
+
+    $ python manage.py createsuperuser;
+
+Para rodar o serviço faça:
+
+    $ python manage.py runserver;
+
+
