@@ -3,11 +3,11 @@ from .models import Pessoa, Veiculo
 # Register your models here.
 
 class PessoaAdmin(admin.ModelAdmin):
-    list_display = ('nome', 'email', 'apartamento')
+    list_display = ('nome', 'email', 'unidade')
 
 
 class VeiculoAdmin(admin.ModelAdmin):
-    list_display = ('placa', 'marca', 'modelo', 'apartamento')
+    list_display = ('placa', 'marca', 'modelo', 'unidade')
     
 
 admin.site.register(Pessoa, PessoaAdmin)
