@@ -1,5 +1,6 @@
 # -*- encoding: utf8 -*-
 from django.db import models
+import morador
 
 # Create your models here.
 
@@ -44,8 +45,11 @@ class Bloco(models.Model):
 class Unidade(models.Model):
     bloco = models.ForeignKey(Bloco, related_name='unidades')
     numero = models.DecimalField(max_digits=4, decimal_places=0)
+    proprietario = models.ForeignKey('morador.Condomino', related_name='unidades', null=True, blank=True)
+
+
 
 
     def __unicode__(self):
-        return u'%(numero)s %(bloco)s' % {'bloco': self.bloco.nome,
+        return u'%(numero)s - %(bloco)s' % {'bloco': self.bloco.nome,
                                            'numero': self.numero}

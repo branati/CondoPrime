@@ -1,6 +1,7 @@
 # -*- encoding: utf8 -*-
 from django.contrib import admin
 from .models import Bloco, Unidade, Condominio
+
 # Register your models here.
 
 
@@ -23,9 +24,21 @@ class CondominioAdmin(admin.ModelAdmin):
 
 
 class BlocoAdmin(admin.ModelAdmin):
-    fields = ['nome']
+    fields = ['nome', 'condominio']
     inlines = [UnidadeInline]
+    list_display = ['nome', 'condominio']
+    list_filter = ['condominio']
+
+
+class UnidadeAdmin(admin.ModelAdmin):
+    fieldsets = [
+        ('Informações da Unidade', {'fields': ['bloco', 'numero']}),
+        ('Informações do Proprietário', {'fields': ['proprietario']})
+    ]
+    list_display = ['numero', 'bloco', 'proprietario']
+    list_filter = ['bloco']
+    search_fields = ['numero']
 
 admin.site.register(Bloco, BlocoAdmin)
-admin.site.register(Unidade)
+admin.site.register(Unidade, UnidadeAdmin)
 admin.site.register(Condominio, CondominioAdmin)

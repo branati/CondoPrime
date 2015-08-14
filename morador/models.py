@@ -1,16 +1,16 @@
 # -*- encoding: utf8 -*-
 from django.db import models
-from condominio.models import Unidade
+import condominio
 # Create your models here.
 
 
-class Pessoa(models.Model):
+class Condomino(models.Model):
     nome = models.CharField(max_length=200)
     data_nascimento = models.DateField('data de nascimento', blank=True)
     email = models.EmailField()
     foto = models.CharField(max_length=50, null=True, blank=True)
     documento = models.CharField(max_length=14)
-    unidade = models.ForeignKey(Unidade, related_name='moradores')
+    unidade = models.ForeignKey('condominio.Unidade', related_name='moradores')
 
 
     def __unicode__(self):
@@ -29,7 +29,7 @@ class Veiculo(models.Model):
     cor = models.CharField(max_length=50)
     ano = models.IntegerField(null=True, blank=True)
     foto = models.CharField(max_length=50, null=True, blank=True)
-    unidade = models.ForeignKey(Unidade, related_name='veiculos')
+    unidade = models.ForeignKey('condominio.Unidade', related_name='veiculos')
 
     def __unicode__(self):
         return u'%(marca)s %(modelo)s %(placa)s' % {'marca': self.marca,
