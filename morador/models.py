@@ -1,6 +1,6 @@
 # -*- encoding: utf8 -*-
 from django.db import models
-import condominio
+
 # Create your models here.
 
 
@@ -12,6 +12,8 @@ class Condomino(models.Model):
     documento = models.CharField(max_length=14)
     unidade = models.ForeignKey('condominio.Unidade', related_name='moradores')
 
+    class Meta:
+        ordering = ['unidade']
 
     def __unicode__(self):
         return self.nome
